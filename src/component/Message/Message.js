@@ -1,16 +1,10 @@
 import React from "react";
-import moment from "moment";
 
 import ChatRoomMessages from "./MessageStyling";
 
-const Message = ({ message: { user, text }, name }) => {
+const Message = ({ message: { user, text, time }, name }) => {
   // Initialize Material UI Styling
   const classes = ChatRoomMessages();
-
-  // Formate Time to 12 Hour AM / PM Format
-  const currentTime = moment().format("h:mm A");
-
-  console.log("currentTime is:", currentTime);
 
   let isCurrentUser = false;
 
@@ -23,7 +17,7 @@ const Message = ({ message: { user, text }, name }) => {
       <div className={classes.message}>
         <div className={classes.userTimeStamp}>
           <p className={classes.userText}>{name}</p>
-          <p className={classes.time}>{currentTime}</p>
+          <p className={classes.time}>{time}</p>
         </div>
         <p className={classes.text}>{text}</p>
       </div>
@@ -33,7 +27,7 @@ const Message = ({ message: { user, text }, name }) => {
       <div className={classes.message}>
         <div className={classes.userTimeStamp}>
           <p className={classes.userText}>{user}</p>
-          <p className={classes.time}>{currentTime}</p>
+          <p className={classes.time}>{time}</p>
         </div>
         <p className={classes.text}>{text}</p>
       </div>
